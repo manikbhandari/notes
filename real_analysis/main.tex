@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage{nips_2018}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}
+
+\title{Probability Theory}
+
+\author{
+	Manik Bhandari\thanks{Use footnote for providing further
+		information about author (webpage, alternative
+		address)---\emph{not} for acknowledging funding agencies.} \\
+	Department of Computer Science\\
+	Indian Institute of Science\\
+	Bangalore, India \\
+	\texttt{mbbhandarimanik2@gmail.com} \\
+}
+
+\begin{document}
+	% \nipsfinalcopy is no longer used
+	
+	\maketitle
+	
+	\begin{abstract}
+		Notes of Real Analysis mainly from Abbott's \textit{Understanding Analysis} and Rudin's \textit{Principles of Mathematical Analysis}.
+	\end{abstract}
+	
+	\section{Real Numbers}
+	Rational numbers have \emph{holes}.
+	\begin{theorem}
+		There is no rational number whose square is 2.
+	\end{theorem}
+	\begin{proof}
+		Proof is by contradiction. Let there be a rational number $p/q$ where $p$ and $q$ have no common factors and whose square is 2.
+		Find the common factor 2 and reach the contradiction.
+	\end{proof}
+	Further, let $A$ be the set of all positive rational numbers $q$ such that $q^2 < 2$ and $B$ be the set of all rational numbers $p$ 
+	such that $p^2 > 2$. Then, $A$ contains no largest number and $B$ has no smallest number. Consider 
+	\[q = p - \frac{p^2-2}{p+2} = \frac{2p+2}{p+2}.\]  \[\implies q^2 - 2 = 2\frac{p^2-2}{(p+2)^2}.\]
+	If $p \in A$ then $q > p$  and $q \in A$. If $p \in B$ then $q < p$ and $q \in B$.
+	Clearly, rational number system has certain holes. Interestingly between every two rational numbers $r$ and $s$ there is a rational $\frac{r+s}{2}.$
+	Still the rational number system has gaps and the real system will try to fill these gaps by defining a new \emph{irrational number} wherever there
+	are holes.
+	
+	\subsection{Ordered Set}
+	A set is a \emph{collection} of objects called \emph{elements} of the set. An order is a \emph{relation} defined on a set, say $S$ and is denoted
+	by $<$. Order has 2 properties:
+	\begin{enumerate}
+		\item For $x \in S$ and $y \in S$, either $x < y$ or $x = y$ or $x > y$.
+		\item If $x,y,z \in S$, if $x < y$ and $y < z$ then $x < z$.
+	\end{enumerate}
+	An \emph{Ordered Set} is a set on which an order is defined.
+	\paragraph{Bound.} Let $S$ be an ordered set and $E \subset S$. If there is a $\beta \in S$ such that $x \leq \beta$ for every $x \in E$ then 
+	E is \emph{bounded above} and $\beta$ is the \emph{upper bound} of $E$. Note that $\beta$ might not belong to $E$. Similar definition for 
+	\emph{lower bound}.
+	\paragraph{Least Upper bound. } Let $S$ be an ordered set and $E \subset S$ which is bounded above. Then if there is an $\alpha \in S$ such that
+	\begin{enumerate}
+		\item $\alpha$ is an upper bound of $E$ and 
+		\item if $\gamma < \alpha$, then $\gamma$ is not an upper bound of $E$ 
+	\end{enumerate}
+	then $\alpha$ is the \emph{least upper bound} of $E$ or \emph{supremum} of $E$. There is at most one such number. \[\alpha = sup E.\]
+	\paragraph{Greatest Lower Bound. } For the same $S$ and $E$ defined above, if there is a $\beta \in S$ such that (1) $\beta$ is a lower 
+	bound of $E$ and (2) if $\gamma > \beta$ then $\gamma$ is not a lower bound of $E$ then $\beta$ is the \emph{greatest lower bound} of 
+	$E$ or \emph{Infimum} of $E$. \[\beta = inf E.\]
+	 \paragraph{Least Upper Bound Property.} $S$ has least upper bound property if for any $E \subset S$, if $E$ is not empty and $E$ is 
+	 bounded above then sup $E$ esists in $S$.
+	 \begin{theorem}
+	 	Suppose $S$ has least upper bound property, then for every $B \subset S$, $B$ is not empty and B is bounded below, inf $B$ exists
+	 	in $S$.
+	 \end{theorem}
+	 \begin{proof}
+	 	Let $L$ be the set of all lower bounds of $B$ i.e. $L$ consists of all $y \in S$ such that $y < x$ for every $x \in B$. Then $L$ is not empty.
+	 	$L$ is bounded above by every element of $B$. So $L$ must have a supremum in $S$, say $\alpha$. $\alpha$ might not be in $L$. \\
+	 	Let $\gamma < \alpha$, then by definition, $\gamma$ is not an upper bound of $L$ but every element of $B$ is an upper bound of $L$, so
+	 	$\gamma \notin B$. This means that $\alpha \leq x$ for every $x \in B$. So $\alpha$ is a lower bound of $B$ $\implies$ $\alpha \in L$.\\
+	 	Also, if $\beta > \alpha$ then $\beta \notin L$ since $\alpha$ is an upper bound of $L$. So, $\alpha$ is a lower bound of $B$ but $\beta$ is 
+	 	not if $\beta > \alpha$. $\implies$ $\alpha = $ inf $B$.  
+	 \end{proof}
+	
+\end{document}
