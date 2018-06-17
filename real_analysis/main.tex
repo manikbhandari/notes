@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{nips_2018}
+\usepackage[final]{nips_2018}
 
 \usepackage[utf8]{inputenc} % allow utf-8 input
 \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
@@ -14,7 +14,7 @@
 
 \newtheorem{theorem}{Theorem}
 
-\title{Probability Theory}
+\title{Real Analysis}
 
 \author{
 	Manik Bhandari\thanks{Use footnote for providing further
@@ -86,5 +86,50 @@
 	 	Also, if $\beta > \alpha$ then $\beta \notin L$ since $\alpha$ is an upper bound of $L$. So, $\alpha$ is a lower bound of $B$ but $\beta$ is 
 	 	not if $\beta > \alpha$. $\implies$ $\alpha = $ inf $B$.  
 	 \end{proof}
-	
+ 
+ 	\subsection{Field}
+	A Field is a set with two operations - \emph{addition} and \emph{multiplication} which satisfy \emph{Field Axioms} - A (addition), M (multiplication),
+	 D (Distributive Law).
+	 \paragraph{Addition Axioms:}
+	 \begin{enumerate}
+	 	\item \emph{Closure.} If $x \in F$ and $y \in F$, then $x + y \in F$.
+	 	\item \emph{Commutative.} $x + y = y + x$ for all $x,y \in F$.
+	 	\item \emph{Associative.} $(x + y) + z = x + (y + z)$ for all $x,y,z \in F$.
+	 	\item \emph{Identity.} $F$ contains an element 0 such that, $0 + x = x$ for every $x \in F$.
+	 	\item \emph{Inverse.} For every $x \in F$ there is an element $-x \in F$ such that, $x + (-x) = 0$.
+	 \end{enumerate}
+ 
+	 \paragraph{Multiplication Axioms:}
+	 \begin{enumerate}
+	 	\item \emph{Closure.} If $x \in F$ and $y \in F$, then $xy \in F$.
+	 	\item \emph{Commutative.} $xy = yx$ for all $x,y \in F$.
+	 	\item \emph{Associative.} $(xy)z = x(yz)$ for all $x,y,z \in F$.
+	 	\item \emph{Identity.} $F$ contains an element 1 ($1 \neq 0$) such that, $1x = x$ for every $x \in F$.
+	 	\item \emph{Inverse.} For every $x \in F$ (except 0) there is an element $1/x \in F$ such that, $x(1/x) = 1$.
+	 \end{enumerate}
+	 
+	 \paragraph{Distributive Law:} For all $x,y,z \in F$,  $x(y+z) = xy + xz$.\\
+	 Clearly, $Q$, the set of all rational numbers is a Field.
+	  
+	  \subsubsection{Ordered Field}
+	  Ordered Field $F$ is a Field that is also an ordered set such that 
+	  \begin{enumerate}
+	  	\item $x + y < x + z$ if $y < z$ for $x,y,z \in F$.
+	  	\item $xy > 0$ if $x > 0$ and $y > 0$ for $x,y \in F$.
+	  \end{enumerate}
+	 
+	\subsection{The Real Field}
+	There exists an ordered field $R$ which has \emph{least upper bound property} and \emph{contains $Q$} as a sub-field. Elements of R are \emph{real numbers}.
+	$R$ can be constructed from $Q$.
+
 \end{document}
+
+
+
+
+
+
+
+
+
+
