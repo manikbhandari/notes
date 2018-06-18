@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{nips_2018}
+\usepackage[final]{nips_2018}
 
 \usepackage[utf8]{inputenc} % allow utf-8 input
 \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
@@ -10,13 +10,14 @@
 \usepackage{nicefrac}       % compact symbols for 1/2, etc.
 \usepackage{microtype}      % microtypography
 \usepackage{amsmath}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}
 
 \title{Probability Theory}
 
 \author{
-	Manik Bhandari\thanks{Use footnote for providing further
-		information about author (webpage, alternative
-		address)---\emph{not} for acknowledging funding agencies.} \\
+	Manik Bhandari\\
 	Department of Computer Science\\
 	Indian Institute of Science\\
 	Bangalore, India \\
@@ -24,7 +25,6 @@
 }
 
 \begin{document}
-	% \nipsfinalcopy is no longer used
 	
 	\maketitle
 	
@@ -38,10 +38,10 @@
 	
 	\section{Expectation of Discrete Random Variables}
 	\begin{itemize}
-		\item Let $n$ be the number of trials and $N_n(x_i)$ be the number of times you observed $x_i$, then for large n \[f(x_i) = \frac{N_n(x_i)}{n}.\]
+		\item \emph{frequentist approach}. Let $n$ be the number of trials and $N_n(x_i)$ be the number of times you observed $x_i$, then for large n \[f(x_i) = \frac{N_n(x_i)}{n}.\]
 		\item A random variable $X$ has \textit{finite} expectation if and only if \[\sum_{i=0}^{i=\infty}|x_i|f(x_i) < \infty, \] then the expectation is \[EX = \sum_{i=0}^{i=\infty}x_if(x_i).\]
 				Otherwise $EX$ is undefined.
-		\item Quick Expectations to remember: Binomial - $np$, Poisson - $\lambda$, Geometric - $\frac{1-p}{p}$.
+		\item Quick Expectations to remember: Binomial - $np$, Poisson - $\lambda$ (so is the variance), Geometric - $\frac{1-p}{p}$.
 		\item Expectation of a function (if it is finite): \[E\phi(X) = \sum_{x}\phi(x)f(x)\]
 		\item Properties
 			\subitem $E(c_1X_1 + c_2X_2 + ...) = c_1EX_1 + c_2EX_2 + ...$
@@ -52,32 +52,51 @@
 			\subitem if $X$ is a non negative, integer valued random variable, $X$ has a finite expectation if and only if $\sum_{x=0}^{x=\infty}P(X \geq x)$ converges. Then $EX = \sum_{x=0}^{x=\infty}P(X \geq x)$.
 	\end{itemize}
 	
+	\subsection{Moments}
+	\begin{enumerate}
+		\item $EX^r$ is defined as the \emph{$r^th$ moment}. $E(X-\mu)^r$ is defined as the \emph{$r^th$ central moment.}
+		\item If $EX^r$ exists then $EX^k$ exists for $k \leq r$.
+		\item Mean ($\mu$) is the first moment.
+		\item If $X$ and $Y$ have a moment of order $r$ then $X + Y$ also have a moment of order $r$. And by induction $X_1 + X+2 + ... X_n$ 
+		also has a moment of order $r$. (see pg 93 for proof)
+	\end{enumerate}
+	\paragraph{Variance.} If random variable $X$ has a finite second moment, then \[Var X = E[(X - EX)^2] \implies Var X = EX^2 - (EX)^2.\]
+	Variance is a measure of the spread about the mean. Consider (extreme case) when $P(X = c) = 1$. $Var X = 0$ which means that $X$ is
+	not spread about the mean, there is no variance, it is exactly at the mean.\\
+	Consider Mean Squared Error (MSE) of a random variable $X$. We wish to choose an $a$ that minimizes $MSE = E(X-a)^2$. Using calculus
+	this value occurs at $a = EX$ and the value of MSE is $Var X$. Another way to see this is that $E(X-a)^2 = E(X-\mu)^2 + (\mu - a)^2$ which
+	has a minima at $\mu = a$ and the min. value is the variance.
+	\paragraph{finding variance.} An easy way to find variance is to use probability generating functions. \[\phi_X(t) = \sum_{x = 0}^{x = \infty} f_X(x)t^x\]
+	\[\implies \phi^{'}_X(1) = EX, \phi^{''}_X(1) = EX(X-1) \implies Var X = \phi^{''}_X(1) - (\phi^{'}_X(1))^2 + \phi^{'}_X(1)\]
+	\paragraph{Standard deviation.} $\sigma = \sqrt{Var X} $
+	\paragraph{Covariance.}
+	\begin{enumerate}
+		\item $Var X + Y = Var X + Var Y + 2E[(X-EX)(Y-EY)]$
+		\item $Cov(X,Y) = E[(X-EX)(Y-EY)] = E(XY) - (EX)(EY)$
+		\item So $Var X + Y = Var X + Var Y + 2Cov(X,Y)$
+		\item $Cov(X,Y) = 0$ for independent $X,Y$. (converse is not true)
+		\item \emph{using induction} \[Var(\sum_{i = 0}^{i = n}X_i) = \sum_{i = 0}^{i = n}Var X_i + 2\sum_{i=0}^{i=n-1}\sum_{j=1}^{j=n}Cov(X_i, X_j).\] 
+		If independent, $Var(\sum_{i = 0}^{i = n}X_i) = \sum_{i = 0}^{i = n}Var X_i$. And if the variance is common, $Var(\sum_{i = 0}^{i = n}X_i) = n\sigma^2$
+	\end{enumerate}
+	\paragraph{Correlation coefficient.} Measures the degree of dependence. \[\rho(X,Y) = \frac{Cov(X,Y)}{\sqrt{(VarX)(Var Y)}}.\]
+	If $X,Y$ are independent, $\rho = 0$ (since $Cov(X,Y) = 0$). $\rho$ is always between -1 and 1 and $|\rho|=1$ only when $P(X=aY)=1$ (highly dependent).
 	
-	
-	\section*{References}
-	
-	References follow the acknowledgments. Use unnumbered first-level
-	heading for the references. Any choice of citation style is acceptable
-	as long as you are consistent. It is permissible to reduce the font
-	size to \verb+small+ (9 point) when listing the references. {\bf
-		Remember that you can use more than eight pages as long as the
-		additional pages contain \emph{only} cited references.}
-	\medskip
-	
-	\small
-	
-	[1] Alexander, J.A.\ \& Mozer, M.C.\ (1995) Template-based algorithms
-	for connectionist rule extraction. In G.\ Tesauro, D.S.\ Touretzky and
-	T.K.\ Leen (eds.), {\it Advances in Neural Information Processing
-		Systems 7}, pp.\ 609--616. Cambridge, MA: MIT Press.
-	
-	[2] Bower, J.M.\ \& Beeman, D.\ (1995) {\it The Book of GENESIS:
-		Exploring Realistic Neural Models with the GEneral NEural SImulation
-		System.}  New York: TELOS/Springer--Verlag.
-	
-	[3] Hasselmo, M.E., Schnell, E.\ \& Barkai, E.\ (1995) Dynamics of
-	learning and recall at excitatory recurrent synapses and cholinergic
-	modulation in rat hippocampal region CA3. {\it Journal of
-		Neuroscience} {\bf 15}(7):5249-5262.
+	\begin{theorem}
+		The schwarz inequality. Let X and Y have finite second moment. Then \[E(XY)^2 \leq (EX)^2(EY)^2.\] The equality holds if and only if $P(Y=0)=1$ or 
+		$P(X=aY)=1$ for some constant a.
+	\end{theorem}
+	\begin{proof}
+		If $P(Y=0)=1$, equality holds and $P(X=aY)=1$, equality holds. Let $P(Y=0) < 1$. $\implies EY^2 > 0$.\\
+		Consider $E(X-\lambda Y)^2$. Clearly, $0 \leq E(X-\lambda Y)^2 = \lambda^2 EY^2 - 2\lambda EXY + EX^2$ which is a quadratic in $\lambda$. It has a minima
+		at $\lambda = \frac{E(XY)}{EY^2}$. So the minimum value is positive and is given by \[E(X-\lambda Y)^2 = EX^2 - \frac{[E(XY)]^2}{EY^2} \geq 0.\] If equality holds
+		then $E[x-\lambda Y] = 0 \implies P(X-\lambda Y = 0) = 1 \implies P(X = \lambda Y) = 1.$ 
+	\end{proof}
+
+	\paragraph{Chebyshev's Inequality.} Let $X$ be a non-negative random variable having finite expectation. Let $t$ be a real number, define $Y$ such that $Y=0$ if 
+	$X<t$ and $Y = 1$ if $X >= t$. $EY = 0P(Y=0) + tP(Y=t) = tP(X \geq t)$. Since $X \geq Y, EX \geq EY = tP(X\geq t)$ \[\implies P(X \geq t) \leq \frac{EX}{t}.\]
+	Thus \[P(|X-\mu| \geq t) \leq \frac{\sigma^2}{t^2}. \] This assumes nothing about the distribution of $X$. Usually you get better bounds if you know something 
+	about the distribution of $X$ (apart from it being nonnegative and having finite variance).
+	\paragraph{Application. Weak Law of Large numbers} Let $S_n$ be sum of $n$ random variables having common variance $\sigma^2$. 
+	Then $Var (S_n/n) = n\sigma^2 / n^2 = \sigma^2 /n$. So \[P(|\frac{S_n}{n} - \mu| \geq \delta) \leq \frac{\sigma^2}{n\delta^2}  \implies \lim_{n\to\infty} P(|\frac{S_n}{n} - \mu| \geq \delta) = 0\] for any $\delta > 0$. Which	means that you can approximate $\mu$ by $S_n /n$ for large $n$. In face this is true even if $\sigma^2$ is not finite, only $\mu$ needs to be finite.
 	
 \end{document}
