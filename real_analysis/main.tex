@@ -17,9 +17,7 @@
 \title{Real Analysis}
 
 \author{
-	Manik Bhandari\thanks{Use footnote for providing further
-		information about author (webpage, alternative
-		address)---\emph{not} for acknowledging funding agencies.} \\
+	Manik Bhandari
 	Department of Computer Science\\
 	Indian Institute of Science\\
 	Bangalore, India \\
@@ -127,6 +125,25 @@
 	\paragraph{Existence of $n^{th}$ roots} For every positive real $x > 0$ and positive integer $n > 0$ there is one and only one positive real $y > 0$ such that $y^n = x$. \textbf{Need to study proof of this.}
 	\paragraph{Extended Real System}. For every $x \in R$, define the symbols $-\infty$ and $\infty$ such that $-\infty < x < \infty$. So even if a subset  $E$ of $R$ was not bounded above, in the extended real system it has a least upper bound $Sup E = \infty$. But this is \textbf{not} a field!
 	
+	\subsection{Complex Field}
+	A complex number is an ordered pair (a,b) such that if $x = (a,b)$ and $y = (c,d)$:
+	\begin{enumerate}
+		\item $x + y = (a+b, c+d)$
+		\item $xy = (ac-bd, ad+bc)$ 
+	\end{enumerate}
+	This (definition of addition and multiplication) makes the set of complex numbers a field. We can define $i = (0,1)$. If $z = a+bi$ then its \textit{conjugate} $\bar{z} = a-bi$. Also $a=Re(z)$ and $b=Im(z)$
+	\textit{Absolute Value} of $z$ is positive square root of $z\bar{z}$.
+	\paragraph{Schwart Inequality} If $a_i$ and $b_j$ are complex numbers then 
+	\[| \sum_{j=1}^{j=n}a_j \bar{b_j}|^2 \leq |\sum_{j=1}^{j=n}a_j|^2 |\sum_{j=1}^{j=n}b_j|^2 \]
+
+	\subsection{Euclidean Space}
+	Let $R^k$ be the set of ordered k-tuples. Define
+	\begin{enumerate}
+		\item \textbf{Addition of vectors} $x+y = x_1+y_1 + ... + x_k+y_k$
+		\item \textbf{Multiplication by scalar} $\alpha x = \alpha x_1 + ... \alpha x_k$
+	\end{enumerate}
+	
+	\textbf{Doubt:} What's the conjugate of a vector?
 
 \end{document}
 
