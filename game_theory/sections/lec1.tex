@@ -1,0 +1,62 @@
+\section{Introduction and Examples}
+The course can be divided into four parts. We start with Non cooperative Game Theory.
+
+\paragraph{Game Theory vs Mechanism Design}
+In Game Theory, you are given a game and you must analyze it. \textit{Analyzing} a game typically means finding and analyzing the \textit{Equilibrium}. An informal definition of equilibrium is when all the players of the game are \textit{happy} i.e. if they were to perform some other action, they would not be happy. 
+
+In Mechanism Design, you are given a \textit{desirable behavior} of the players i.e. a \textit{Social Choice Function}. Your task, is to design a game that implements the SCF in the \textit{optimal case}. \textcolor{red}{Optimal case means equilibrium?}
+
+\paragraph{Student Coordination Problem}
+Consider two students, call them $P_1$ and $P_2$. They wish to meet and chat. They can either do that in IISC or on MG Road. These two actions are called \textit{strategies}. Let "going to IISC" be strategy $A$ and "going to MG Road" be strategy $B$. Then the \textit{strategy sets} of the two players are $S_1 = S_2 = \{A, B\}$. 
+
+Assume that \textit{strategies are chosen simultaneously}. This is called a \textit{Simultaneous Moves Game}. A game like chess is not a simultaneous moves game. The fact that player must choose strategies means that this is a \textit{Strategic form Game}. \textcolor{red}{What other form of game can exist?}.
+
+The \textit{utility} of a player is a function $u_i: S_1 \times S_2 \to \mathbb{R}$ (subscript $i$ for player). It maps a \textit{vector or profile} of strategies to a real number called \textit{utility \textcolor{red}{or payoff?}}. 
+
+\begin{wraptable}{r}{5cm}
+	\begin{tabular}{lcc}
+		\toprule
+		1/2 & A & B\\
+		\midrule
+		A & 100,100 & 0, 0 \\
+		B & 0, 0    & 10, 10\\
+		\bottomrule
+	\end{tabular}
+	\caption{Payoff matrix.}
+\end{wraptable}
+
+\paragraph{Assumption of Common Knowledge} This means that 
+\begin{enumerate}
+	\item Each player knows the payoff matrix.
+	\item Each player knows 1.
+	\item Each player knows 2.
+	\item .
+	\item .
+\end{enumerate}
+ad infinitum. 
+
+\paragraph{Players are Rational and Intelligent} A \textit{rational player} maximizes the \textit{Expected value of his own payoff}. This is called \textit{Expected Utility Maximization}. An \textit{Intelligent} player is capable of computing the optimal strategy.
+
+\paragraph{Equilibrium} In this example, there are two equilibria -- $(A,A)$ and $(B,B)$. The intuition is that if a player would choose some other action, he won't be as happy. \textcolor{red}{This is not clear}. This is an example of \textit{Pure Strategy Equilibrium} but another possibility is to have a \textit{probabilistic strategy} leading to \textit{Mixed Strategy Equilibrium}. A strategy will then be a vector of probabilities of choosing each action.
+
+In this case the mixed strategy equilibrium is $(1/11, 10/11), (1/11, 10/11)$ i.e. players can choose to be in MG road most of the time and still be pretty happy.
+
+\paragraph{Cake cutting problem} This is an example of Mechanism Design. Suppose you and your brother want to eat a cake and your mom (The mechanism designer) is to decided how to divide the cake. The SCF is not just fair division, it is to make everyone involved \textit{happy}.
+
+If she cuts the cake, you might feel that your brother will pick the bigger part leading to dissatisfaction. Consider this strategy: you cut the cake but your brother picks the first piece. Since you cut the cake and there is \textit{common knowledge}, you are absolutely sure that it is exactly in half so you're satisfied. Since he picks the first, he might pick what he thinks is the bigger part and he'll be happy. Possible extensions for this could be to $n$ cakes and $m$ players.
+
+\paragraph{Braess Paradox} Adding more links should help but doesn't. Why?
+
+\paragraph{Vickrey Auction} Auctions are essential. Google has a few slots to display for ads and many companies would like to place their ad in the slot. If the user clicks on an ad, the company pays Google for the click. How to decide the price for obtaining the slot? Best way is to bid for it.  
+
+\textit{Winner Determination:} The winner is decided by whoever bids the highest.
+
+\textit{Pricing:} In \textit{First price auctions} the winning bid would be the price of the slot. But Vickrey introduced \textit{Second price auctions} where the second highest bid or the highest non-winning bid is the price of the slot.
+
+This extracts the exact \textit{validation} of each player i.e. the maximum willingness to buy the item. This also satisfies \textit{allocative efficiency} i.e. the item goes to the person who values it the most. It also has the \textit{DSIC property (Dominant Strategy Incentive Compatibility)} which means that you can safely ignore other players and always bid your true validation. (There also exists others like BIC -- Bayesian Incentive Compatibility) There is also no complexity of computing the strategy.
+
+\paragraph{Cooperative Game Theory} This is the form of GT when people form a coalition or a group for their benefit.
+
+\paragraph{Divide the dollar problem} Suppose you have 300\$ and you want to divide it amongst three people such that \textit{at least two should agree} on the division. Let's say $P_1$ proposes $(150, 150, 0)$. This is also a simultaneous moves game. We say that coalition $\{1,2\}$ is formed. But $P_3$ will not sit quietly. He proposes $(200, 0, 100)$. Coalition $\{ 1,3\}$ is formed since both $P_1$ and $P_3$ have increased their utility. But now $P_2$ will not sit quietly, he proposes $(0, 100, 200)$ and thus Coalition $\{2, 3\}$ is formed. This is a highly unstable situation where players will keep cycling.
+
+Variations of this could be similar game but "a leader and one other should agree" or "all three should agree". The dynamics will completely change. 
