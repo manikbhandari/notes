@@ -17,9 +17,7 @@
 \title{Real Analysis}
 
 \author{
-	Manik Bhandari\thanks{Use footnote for providing further
-		information about author (webpage, alternative
-		address)---\emph{not} for acknowledging funding agencies.} \\
+	Manik Bhandari
 	Department of Computer Science\\
 	Indian Institute of Science\\
 	Bangalore, India \\
@@ -121,6 +119,58 @@
 	\subsection{The Real Field}
 	There exists an ordered field $R$ which has \emph{least upper bound property} and \emph{contains $Q$} as a sub-field. Elements of R are \emph{real numbers}.
 	$R$ can be constructed from $Q$.
+	
+	\paragraph{Archimedean Property} For $x,y \in R$, if $x > 0$ you can always find a positive integer $n$ such that $nx > y$.
+	\paragraph{$Q$ is dense in R} For every $x,y \in R$ you can find a $p \in Q$ such that $x < p < y$.
+	\paragraph{Existence of $n^{th}$ roots} For every positive real $x > 0$ and positive integer $n > 0$ there is one and only one positive real $y > 0$ such that $y^n = x$. \textbf{Need to study proof of this.}
+	\paragraph{Extended Real System}. For every $x \in R$, define the symbols $-\infty$ and $\infty$ such that $-\infty < x < \infty$. So even if a subset  $E$ of $R$ was not bounded above, in the extended real system it has a least upper bound $Sup E = \infty$. But this is \textbf{not} a field!
+	
+	\subsection{Complex Field}
+	A complex number is an ordered pair (a,b) such that if $x = (a,b)$ and $y = (c,d)$:
+	\begin{enumerate}
+		\item $x + y = (a+b, c+d)$
+		\item $xy = (ac-bd, ad+bc)$ 
+	\end{enumerate}
+	This (definition of addition and multiplication) makes the set of complex numbers a field. We can define $i = (0,1)$. If $z = a+bi$ then its \textit{conjugate} $\bar{z} = a-bi$. Also $a=Re(z)$ and $b=Im(z)$
+	\textit{Absolute Value} of $z$ is positive square root of $z\bar{z}$.
+	\paragraph{Schwart Inequality} If $a_i$ and $b_j$ are complex numbers then 
+	\[| \sum_{j=1}^{j=n}a_j \bar{b_j}|^2 \leq |\sum_{j=1}^{j=n}a_j|^2 |\sum_{j=1}^{j=n}b_j|^2 \]
+
+	\subsection{Euclidean Space}
+	Let $R^k$ be the set of ordered k-tuples. Define
+	\begin{enumerate}
+		\item \textbf{Addition of vectors} $x+y = x_1+y_1 + ... + x_k+y_k$
+		\item \textbf{Multiplication by scalar} $\alpha x = \alpha x_1 + ... \alpha x_k$
+	\end{enumerate}
+	
+	\textbf{Doubt:} What's the conjugate of a vector?
+	
+	\section{Topology}
+	\paragraph{Function} Let there be 2 sets $A$ and $B$. For \textbf{each} element of $A$ associate an element of $B$ called $f(x)$. Then $f$ is a \textit{function}, $A$ is its \textit{domain }and the set $f(x)$ is its \textit{range}. (f is also called a mapping of $A$ \textit{into} $B$)
+	\paragraph{Image} Let $f:A \to B$. If $E \subset A$ define $f(E)$ to be set of $f(x)$ for $x \in E$. Then $f(E)$ is the \textit{image} of $f$ under $E$.
+	If $f(E) = B$ then $f$ maps $A$ \textit{onto} $B$.
+	\paragraph{Inverse Image} If $E \subset B$, define $f^{-1}(E)$ as set of all $x \in A$ where $f(x) \in E$. \textbf{Note:} All elements of $E$ need not have a corresponding $x$ in A. If for every $y \in B$, $f^{-1}(y)$ is \textbf{at most one} element of $A$ then $f$ is a \textit{one-to-one} mapping.
+	\paragraph{Equivalence} If $f$ is a \textit{one-one} and maps $A$ \textit{onto} $B$ then $A$ and $B$ are \textit{equivalent} written as $A \sim B$. $\sim$ is a relation with following properties
+	\begin{enumerate}
+		\item \textbf{reflexive} $A \sim A$
+		\item \textbf{symmetric} If $A \sim B$ then $B \sim A$
+		\item \textbf{transitive} If $A \sim B$ and $B \sim C$ then $A \sim C$
+	\end{enumerate}
+	Another way to say: $A$ and $B$ have 1-1 \textit{correspondance}, $A$ and $B$ have same \textit{cardinal number}.
+	
+	\paragraph{Countable} Let $A$ be a set, $J_n$ be integers 1, 2..n and $J$ be set of all positive integers. $A$ is \textbf{finite} if $J_n \sim A$ else $A$ is \textbf{infinite}. $A$ is \textbf{countable} if $J \sim A$ else $A$ is \textbf{uncountable}. $A$ is \textit{at most countable} if $A$ is finite or countable. Countable sets are a.k.a. \textit{enumerable} or \textit{denumerable}.
+	
+	\paragraph{Sequence} A sequence is a function $f$ defined on $J$. Let $f(n)$ be $x_n$ then sometimes $f$ is denoted by $x_1, x_2...x_n$ or \{$x_n$\}.
+	
+	\begin{theorem}
+		Every infinite subset of a countable set is countable.
+	\end{theorem}
+	\begin{theorem}
+		Countable union of countable sets is countable. i.e. if \{$E_n$\} is a sequence of countable sets then $S = \cup^{\infty}_{n=1} E_n$ is countable. 
+	\end{theorem}
+	Use it to prove: Set of all n-tuples of elements of a countable set is countable. 
+	
+	Set of all binary sequences is uncountable. (Cantor's diagonal process). Since every real number can be represented as a binary sequence, set of all real numbers is uncountable.
 
 \end{document}
 
