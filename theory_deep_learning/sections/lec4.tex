@@ -1,8 +1,71 @@
-\section{Linear Regression}
+\section{Logistic Regression}
+Used for binary classification and equivalent to 1 layer Neural Network \textcolor{red}{show how}. Let set of classes = $\{0,1\}$ and training set be $S = {(x^1, y^1), (x^2, y^2), ... (x^m, y^m)}$ where each $x^i \in \mathbb{R}^d$ and $y^i \in \{0,1\}$. Classification function will predict the probability of label being 1 (or 0 since their sum is 1). So, we'll have
+\[
+	p_m(y=0|x) + p_m(y=1|x) = 1.
+\]
+To make predictions using this, we'll use
+\[
+y = 
+\begin{cases} 
+\text{1} \quad \text{if} ~p_m[y=1 | x] > 0.5\\
+\text{0} \quad \text{otherwise}
+\end{cases}
+\]
+The function to model probabilities will be 
+\[
+	p_{w,b}(x) = \sigma(<w,x> +~ b)
+\]
+where $W \in \mathbb{R}^d$ and $b \in \mathbb{R}$. To get a probability, we'll pass the linear model through a \textit{sigmoid} function i.e. $\sigma(t) = \frac{1}{1 + e^{-t}} = 1-\sigma(-t)$.
+
+If we define our hypothesis $h$ as above i.e. 
+\[
+h_{w,b}(x) = 
+\begin{cases} 
+\text{1} \quad \text{if} ~p_{w,b}[x] > 0.5\\
+\text{0} \quad \text{otherwise}
+\end{cases}
+\]
+then the set $\mathcal{H} = \{h_w,b: w\in\mathbb{R}^d, b\in\mathbb{R}\}$ defines the \textit{half spaces} hypothesis class, which we know has a VC-dimension of $d+1$. \textcolor{red}{prove this}.
+
+Now, since $L_\mathcal{D}(\mathcal{H}) \leq L_S(\mathcal{H}) + O\big(\sqrt{\frac{VC(\mathcal{H}) + log(1/\delta)}{m}}\big)$ for $m>>d$ ERM should give a small generalization error.
+
+\paragraph{Solving it} We need to find $\underset{w,b}{\text{argmin}}L_S(h_{w,b})$ which is
+\[
+	L_S(h_{w,b}) = \frac{1}{m}\sum_{i}L(y^i \neq h_{w,b}(x^i))
+\] 
+such that for \textit{all $i$}
+\[
+	wx^i + b > 0 \quad \text{if} \quad y^i = 1 \quad \text{and} \quad
+	wx^i + b < 0 \quad \text{if} \quad y^i = 0,	
+\]
+
+This is a linear program which is solvable in polynomial time in $m,d$ if realizable. If not, then finding the argmin is NP-hard. It is also not obvious how to find an approximate solution to this expression.
+
+You can try converting this into a \textit{least-squares} problem i.e. 
+\[
+	\underset{w,b}{\text{min}} \sum_{i \in[m]}(<w,x^i> + b - y^i)^2
+\]
+There is an efficient way to solve this but this is solving the wrong problem! We don't want to value of $<w,x^i> + b$ to be exactly $y^i$.
+
+\paragraph{MLE Approach} Another approach may be to maximize the MLE i.e. 
+\[
+	\text{Likelihood(s)} = \prod_{i \in [m]}p_{w,b}(y^i|x^i)
+\]
+where $p_{w,b}(y=1|x) = \sigma(<w,x> + b)$ and $p_{w,b}(y=0|x) = 1 - \sigma(<w,x> + b)$.
+This implies that 
+\[
+	p_{w,b}(y|x) = \hat{y}^y(1-\hat{y})^{(1-y)} \implies log(p_{w,b}(y|x)) = ylog(\hat{y}) + {(1-y)}log(1-\hat{y})
+\]
+So we need to minimize the \textit{cross entropy loss}
+\[
+	L_{CE}(w,b;S) = -\bigg(\sum_{i \in [m]}y^ilog(\sigma(<w,x^i> + b)) + (1 - y^i)log(1 - \sigma(<w,x^i> + b))\bigg)
+\]
+
+This minima might not always exist. Let's say we keep $y = 1$, then the first term can be taken to $-\infty$ by making the weights arbitrarily large.
 
 
 \section{Multinomial Logistic Regression}
-Let set of classes = ${1,2...k}$ and training set be $S = {(x^1, y^1), (x^2, y^2), ... (x^m, y^m)}$ where each $x^i \in \mathbb{R}^d$ and $y^i \in [k]$. 
+Let set of classes = $\{1,2...k\}$ and training set be $S = {(x^1, y^1), (x^2, y^2), ... (x^m, y^m)}$ where each $x^i \in \mathbb{R}^d$ and $y^i \in [k]$. 
 
 There are multiple ways to model this, one way is to use \textit{one vs all} approach. The other is to use a logistic regression approach. Here, we take the latter. \textcolor{red}{Work out the expression for one vs all case.} Use $k$ linear functions as 
 \[
