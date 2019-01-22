@@ -1,0 +1,21 @@
+\section{Linear Regression}
+[Lost notes]
+
+\section{Multinomial Logistic Regression}
+Let set of classes = ${1,2...k}$ and training set be $S = {(x^1, y^1), (x^2, y^2), ... (x^m, y^m)}$ where each $x^i \in \mathbb{R}^d$ and $y^i \in [k]$. 
+
+There are multiple ways to model this, one way is to use \textit{one vs all} approach. The other is to use a logistic regression approach. Here, we take the latter. \textcolor{red}{Work out the expression for one vs all case.} Use $k$ linear functions as 
+\[
+	<w_1,x> + b_1, ..., <w_k, x> + b_k.
+\]
+We'll also make use of the softmax function which takes a vector of inputs $(t_1, t_2...)$ and transforms them to $(\frac{e^{t_1}}{\sum e^{t_i}}, ... )$. This has the nice property that its sum to one. \textcolor{red}{add imp props of softmax}.
+
+We then use the \textit{Maximum Likelihood Approach}. Define Likelihood as
+\[
+	\prod_{i=1}^{m}p(y^i|x^i) = p(1|x)^{\mathbbm{1}_(y=1)}...p(k|x)^{\mathbbm{1}_(y=k)}
+\]
+
+Maximizing this equivalent to minimizing the \textit{Cross Entropy Loss} \textcolor{red}{Why is it called cross entropy}.
+\[
+	L_{CE}(w,b;S) = -\sum_{i\in[k]}\mathbbm{1}_(y=1)log\bigg(\frac{e^{<w_i,x>+b_i}}{\sum e^{<w_i,x>+b_i}}\bigg) = log\bigg( \frac{e^{<w_{y^i},x>+b_{y^i}}}{\sum e^{<w_{y^i},x>+b_{y^i}}} \bigg)
+\]
