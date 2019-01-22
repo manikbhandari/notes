@@ -1,5 +1,5 @@
 \section{Linear Regression}
-[Lost notes]
+
 
 \section{Multinomial Logistic Regression}
 Let set of classes = ${1,2...k}$ and training set be $S = {(x^1, y^1), (x^2, y^2), ... (x^m, y^m)}$ where each $x^i \in \mathbb{R}^d$ and $y^i \in [k]$. 
@@ -19,3 +19,26 @@ Maximizing this equivalent to minimizing the \textit{Cross Entropy Loss} \textco
 \[
 	L_{CE}(w,b;S) = -\sum_{i\in[k]}\mathbbm{1}_(y=1)log\bigg(\frac{e^{<w_i,x>+b_i}}{\sum e^{<w_i,x>+b_i}}\bigg) = log\bigg( \frac{e^{<w_{y^i},x>+b_{y^i}}}{\sum e^{<w_{y^i},x>+b_{y^i}}} \bigg)
 \]
+
+\section{Feed forward Neural Networks}
+Assume 2 layers - hidden layer and output layer. We never count input layer. 
+
+Let $f = (f_1, ..., f_k)$ such that $f:\mathbb{R}^d \to \mathbb{R}^k$.
+
+Let $f_i(x) = \sum_{r\in[m]}a_{ir}\rho(<w_r,x> + b_r)$ where $w_r \in \mathbb{R}^d, a_{ir}, b_r \in \mathbb{R}$ and $\rho:\mathbb{R}\to\mathbb{R}$ is the \textit{activation function}. \textcolor{red}{Note different types of activation functions and their properties. When to use which.}
+
+This can be written in a compact form as $f(x) = A\rho(Wx + b)$ where each row of $A$ is $a_i$ and each row of $W$ is $w_r$.
+
+Note that, $A$ takes the role of $W$ in the next layer. So, to generalize to further layers, you'll find:
+
+For $l$ layers: $f(x) = \rho(W^l(...\rho(W^2\rho(W^1x))))$.
+
+\paragraph{Survey of techniques}
+\begin{enumerate}
+	\item \hyperlink{https://people.csail.mit.edu/rivest/pubs/BR93.pdf}{[Blum and Rivest, 1992]} n input units, 2 hidden units, 1 output unit, $|S|=O(d)$ where $x\in\mathbb{R}^d$, Activation function $\rho$ is \textit{threshold function}. It's NP-Hard to fit this network to an $S$.
+	\item \hyperlink{https://ac.els-cdn.com/S0304397501000573/1-s2.0-S0304397501000573-main.pdf?_tid=e2ae69f9-606c-4b53-a085-e8919afbe4f1&acdnat=1548162465_310e08a262614701ef11c40c8999c1c6}{[Bartlett and Ben-David]} Similar architecture as above except $k$ hidden units. For a realizable $S$, finding weights that fit at least $(1 - \frac{c}{k})$ fraction of examples is NP-hard, where c is some constant.
+	\item \hyperlink{https://www.mitpressjournals.org/doi/pdf/10.1162/089976602760408035}{[Sima 2002]} One neural, sigmoid activation, NP-hard to train.
+	\item \hyperlink{}{[BLR 18, MR18]} Same results as above but for ReLU networks.
+	\item \hyperlink{}{[Jones, VN 1998]} 1 Hidden layer of sigmoid with units polynomial in $d$. Output linear with non-negativity. Also NP-hard.
+	
+\end{enumerate}
