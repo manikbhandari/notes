@@ -3,6 +3,24 @@
 \paragraph{Solving ERM}
 Assume some data points in 2-d of the form $S = \{(x^i,y^i), ... , (x^m,y^m)\}$. Assume 2 layer Neural Network with $k$ hidden units and 1 output unit.
 
-So $f(x_i) = \sum_{i=1}^{k}ReLU(a_i(<w,x> + b_i))$
+So $f(x_i) = \sum_{i=1}^{k}a_iReLU((<w,x> + b_i))$
 
 We need to find parameters $w_i, b_i, a_i$ such that $f(x_i) = y_i$ for all $i \in [m]$.
+
+\paragraph{Proof by construction} Let all $w_i$ be in a \textit{special direction} with unit norm. This means that $w_i = w$. The special direction is such that if you take a line perpendicular to that direction, you'll encounter at most one data point over the whole 2-d space. \textcolor{red}{Prove that such a line always exists.} Let's pass our $x$ through the Neural Network.
+
+
+
+\begin{flalign}
+	& f(x^1) = a_1ReLU((<w,x^1> + b_1)) + a_2ReLU((<w,x^1> + b_2)) + ...\\
+	& f(x^2) = a_1ReLU((<w,x^2> + b_1)) + a_2ReLU((<w,x^2> + b_2)) + ...\\
+	& f(x^3) = a_1ReLU((<w,x^3> + b_1)) + a_2ReLU((<w,x^3> + b_2)) + a_3ReLU((<w,x^3> + b_3)) ...
+\end{flalign}
+
+Let's say I choose $b_1$ such that $ReLU((<w,x_1> + b_1)) = \epsilon$ and choose $a_i = y^i/\epsilon$. Then $ReLU((<w,x_1> + b_1)) = 0$ for $x$ lying beyond $\epsilon$ left of $x^1$ since $<w,x>$ is just the projection of $x$ on $w$. Also value of the NN at $x^1$ will then be $y^1$.
+
+Now consider $x^2$. Choose $b_2$ in similar fashion i.e. $ReLU((<w,x_2> + b_2)) = 0$ for all $x$ beyond $\epsilon$ left of $x_2$. The first term in (2) will contribute let's say $p$. Let output of the second term in (2) be $a_2p$ then you can choose $a_2$ such that $a_2p + q = y^2$. No other term will contribute to this equation since we'll choose their $b_i$ so that they are zero to the $\epsilon$ left of respective $x_i$.
+
+Note that, for a successful construction, you assumed that there is at least some small $\epsilon$ distance along $w$ between two points.
+
+\textcolor{red}{Need figure.}
