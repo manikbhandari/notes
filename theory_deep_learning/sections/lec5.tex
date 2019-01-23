@@ -1,0 +1,8 @@
+\paragraph{Over-parametrization case} Most of the previous work rely on \textit{small networks} or put some restrictions on activation functions. Let's now consider the case when there is overparametrization i.e. hidden layer size $k$ > data points $m$ and the activation used is the one that is practically used - \textit{ReLU}.
+
+\paragraph{Solving ERM}
+Assume some data points in 2-d of the form $S = \{(x^i,y^i), ... , (x^m,y^m)\}$. Assume 2 layer Neural Network with $k$ hidden units and 1 output unit.
+
+So $f(x_i) = \sum_{i=1}^{k}ReLU(a_i(<w,x> + b_i))$
+
+We need to find parameters $w_i, b_i, a_i$ such that $f(x_i) = y_i$ for all $i \in [m]$.
