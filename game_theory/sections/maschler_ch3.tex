@@ -31,4 +31,14 @@ Henceforth, dominated = weakly dominated. A rational player will never choose a 
 
 Elimination of a player's dominant strategy does not require the knowledge of other players' payoffs. However, in rationalizability when we eliminate $s_i$ of player $i$ after $s_j$ of player $j$, player $i$ assume that player $j$ will never play $s_j$.
 
-\paragraph{Second price auction as Strategic Form Game}
+\paragraph{Second price auction as Strategic Form Game} Let $N$ be the set of players, $S_i = [0, \infty]$ is the set of bids that the player can make, utility for a given strategy vector $b$ is 
+\[
+u_i(b) = 
+\begin{cases}
+0 \quad \quad \quad \quad \quad \quad \quad \text{if} \quad b_i \neq \underset{j}{max}b_j\\
+\frac{v_i - \underset{i \neq j}{max}b_j}{|\{k: b_k = \underset{j}{max}b_j\}|} \quad \quad \text{if} \quad b_i = \underset{j}{max}b_j
+\end{cases}
+\]
+Second case arises from the fact that $k$ people can give the same maximum bid in which case, the winner will be decided by a fair lottery. Note that, in this case the second highest bid will also be the same as $v_i$ and so the profit will be 0.
+
+In this game, the strategy $b_i = v_i$ weakly dominates all other strategies.
