@@ -24,3 +24,5 @@ Now consider $x^2$. Choose $b_2$ in similar fashion i.e. $ReLU((<w,x_2> + b_2)) 
 Note that, for a successful construction, you assumed that there is at least some small $\epsilon$ distance along $w$ between two points.
 
 \textcolor{red}{Need figure.}
+
+\paragraph{Solving ERM proves nothing} We showed that we can solve for ERM for $k \geq m$. Now, since $L_\mathcal{D}(\mathcal{H}) \leq L_S(\mathcal{H}) + O\big(\sqrt{\frac{VC(\mathcal{H}) + log(1/\delta)}{m}}\big)$, the second term is greater than 1. \textcolor{red}{How?}. But we knew that $L_\mathcal{D}(\mathcal{H})$ can be at most 1 so, this is a \textit{vacuous bound}. This is just an example of the larger observation that traditional bounds fail for the overparametrization case. And if you were to use such an ERM hypothesis in practice, you'll observe a large generalization error.
