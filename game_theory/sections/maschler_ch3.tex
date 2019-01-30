@@ -1,0 +1,34 @@
+\section{Strategic form games a.k.a. Normal form}
+\paragraph{Definition} A Strategic Form Game is an ordered triple $G = (N, (S_i)_{i \in N}, (u_i)_{i \in N})$. $N$ is the \textit{finite} set of players $N = {1,2,..,n}$, $S_i$ is the set of strategies of player $i$. Denote the set of all possible strategy vectors as $S = S_1 \times S_2 ... \times S_n$. And $u_i: S \to \mathbb{R}$ maps a vector of strategies $s = (s_i)_{i \in N}$ to the payoff of the $i^{th}$ player. 
+
+Note the strategy set of a player need not be finite. If it is finite, we call it a \textit{finite game}.
+
+\paragraph{Notation} Denote $X$ as the cross product $\times_{i \in N}X_i$. Then $X_{-i} = \times_{j\neq i}X_j$ i.e. an element of $X_{-i}$ is an n-1 dimensional vector $x_{i-1} = (x_i, ... x_{i-1}, x_{i+1}... x_n)$.
+
+\paragraph{Domination} The strategy $s_i$ of a player is dominated by $t_i$ if for \textit{each} strategy of other players $s_{-i} \in S_{-i}$ 
+\[
+    u_i(s_i, s_{-i}) < u_i(t_i, s_{-i})
+\]
+So $t_i$ strictly dominates $s_i$ or $s_i$ is strictly dominated by $t_i$.
+
+\paragraph{Assumptions} A rational player will never choose a strictly dominated strategy and all players in the game are rational. Also assume rationality is common knowledge.
+
+\paragraph{Strictly dominated strategy} of a player is one which strictly dominates all other strategies of the player.
+
+\paragraph{Iterated elimination of dominant strategies} Since all players are rational and this is common knowledge, and rational players never choose a dominated strategy, we can safely eliminate such a strategy from a player's strategy set. Iteratively doing this is called Iterated elimination of dominated strategies. When this process yields only \textit{one} strategy per player, the strategy vector obtained is called \textit{solution} of game.
+
+Therefore, solution always exists if each player has a \textit{strictly dominant strategy}.
+
+\paragraph{Order of elimination} does not matter when we iteratively eliminate dominated strategies. You'll always get the same set of strategies. \textcolor{red}{prove this}.
+
+\paragraph{Weakly dominated strategy} $s_i$ is weakly dominated by $t_i$ if 
+\begin{enumerate}
+	\item for every strategy $s_{-i} \in S_{-i}$ of other players, $u_i(s_i, s_{-i}) \leq u_i(t_i, s_{-i})$ \textit{and}
+	\item there exists at least one strategy $t_{-i} \in S_{-i}$ of other players such that $u_i(s_i, t_{-i}) < u_i(t_i, t_{-i})$.
+\end{enumerate}
+
+Henceforth, dominated = weakly dominated. A rational player will never choose a dominated strategy. A \textit{rational strategy} is one which is reached by iterative elimination of weakly dominated strategies a.k.a. \textit{rationalizability}. 
+
+Elimination of a player's dominant strategy does not require the knowledge of other players' payoffs. However, in rationalizability when we eliminate $s_i$ of player $i$ after $s_j$ of player $j$, player $i$ assume that player $j$ will never play $s_j$.
+
+\paragraph{Second price auction as Strategic Form Game}
