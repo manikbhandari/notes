@@ -1,5 +1,33 @@
-\section{Chapter 1 - maschler}
+\section{Utility Theory}
 \paragraph{Every game of chess ends in either a win for white, win for black, or draw.}
 Simple proof idea: think of the game of chess as a tree with children being the reachable board positions from parent. Start from the leaf and build up.
 
 \paragraph{preference relation} A player wants his \textit{best possible outcome}. To measure this we want a relation between all possible outcomes. \textcolor{red}{An order?}. This relation is \textit{preference relation}.
+It is a binary relation over the set of possible outcomes $O$ i.e. $x \geq_{i} y$ implies that player $i$ prefers outcome $x$ over $y$ or is indifferent between the two.
+
+\paragraph{Assumptions about the preference relation}
+\begin{enumerate}
+    \item It is complete i.e. for any pair of outcomes $x, y$ in $O$ either $x \geq_{i} y$ or $x \leq_{i} y$  or both.
+    \item It is reflexive i.e. $x \geq_{i} x$ for all $x \in O$.
+    \item It is transitive i.e. for any $x,y,z \in O$ if $x \geq_{i} y$ and $y \geq_{i} z$ then $x \geq_{i} z$.
+\end{enumerate}
+
+\paragraph{Utility function} is a mapping from $O \to \mathbb{R}$ such that if $x \geq_{i} y$ then $u(x) \geq_{i} u(y)$. Essentially it is an association of preference with a real number.
+Note that for any monotonically increasing function $v:\mathbb{R} \to \mathbb{R}$, $v \cdot u = v(u(x))$ is also a utility function for the same preference relation. So a utility function $u$ is only \textit{ordinal} i.e the real number is not a measure of intensity of a player's preference.
+
+\section{Strategic form games a.k.a. Normal form}
+\paragraph{Definition} A Strategic Form Game is an ordered triple $G = (N, (S_i)_{i \in N}, (u_i)_{i \in N})$. $N$ is the \textit{finite} set of players $N = {1,2,..,n}$, $S_i$ is the set of strategies of player $i$. Denote the set of all possible strategy vectors as $S = S_1 \times S_2 ... \times S_n$. And $u_i: S \to \mathbb{R}$ maps a vector of strategies $s = (s_i)_{i\inN}$ to the payoff of the $i^{th}$ player. 
+
+Note the strategy set of a player need not be finite. If it is finite, we call it a \textit{finite game}.
+
+\paragraph{Notation} Denote $X$ as the cross product $\times_{i\inN}X_i$. Then $X_{-i} = $\times_{j\neq i}X_j$ i.e. an element of $X_{-i}$ is an n-1 dimensional vector $x_{i-1} = (x_i, ... x_{i-1}, x_{i+1}... x_n)$.
+
+\paragraph{Domination} The strategy $s_i$ of a player is dominated by $t_i$ if for \textit{each} strategy of other players $s_{-i} \in S_{-i}$ 
+\[
+    u_i(s_i, s_{-i}) < u_i(t_i, s_{-i})
+\]
+So $t_i$ strictly dominates $s_i$ or $s_i$ is strictly dominated by $t_i$.
+
+\paragraph{Assumptions} A rational player will never choose a strictly dominated strategy and all players in the game are rational. Also assume rationality is common knowledge.
+
+\paragraph{Strictly dominant strategy} of a player is one which strictly dominates all other strategies of the player.

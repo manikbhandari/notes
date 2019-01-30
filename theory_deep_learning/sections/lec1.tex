@@ -69,9 +69,13 @@ Now, true error
 
 \paragraph{Bayes optimal predictor} is the best labeling function defined as
 \[
-	f_{\mathcal{D}}(x) = [insert brackets] 1 if \mathbb{P}[y=1 | x] \geq 0.5
-									0 o.w
+	f_{\mathcal{D}}(x) = 
+        \begin{cases} 
+            \text{1} \quad \text{if} ~\mathbb{P}[y=1 | x] \geq 0.5\\
+            \text{0} \quad \text{otherwise}
+        \end{cases}
 \]
+i.e. there is no other labeling function with a lower true error rate.
 
 \paragraph{Agnostic PAC Learnability} A hypothesis class $\mathcal{H}$ is agnostic PAC learnable w.r.t. a set $\mathbb{Z}$ and a loss function $l: \mathcal{Z} \to \mathbb{R}_+$ if there exists a function $m_\mathcal{H}: (0,1)^2 \to \mathbb{N}$ and a learning algorithm such that\\
 for \textit{every} $\epsilon, \delta \in (0,1)$ and for  \textit{every} $\mathcal{D}$ over $\mathcal{Z}$ when the algorithm is run $m \geq m_\mathcal{H}(\epsilon, \delta)$ samples iid from $\mathcal{D}$, the algo returns a hypothesis $h \in \mathcal{H}$ such that with probability $1 - \delta$ over the training samples
