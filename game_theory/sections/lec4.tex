@@ -1,1 +1,39 @@
-\section{Lecture 4}
+\section{PSNE and intro to MSNE}
+\paragraph{Example} Let's say there is a channel and $n$ agents who want to communicate information through the channel. It's channel capacity is 1 units. This is a \textit{single shot simultaneous moves} game.
+
+Here $N = {1,2, ..., n}$; $S_1 = S_2 = ... = S_n = [0,1]$. A strategy profile $x = (x_1, x_2, ..., x_n)$ is a vector with $x_i \in [0, 1]$. Note that this is an infinite game since infinite strategies are possible.
+
+Here 
+\[
+u_i(x_1, x_2, ..., x_n) = 
+\begin{cases}
+x_i(1 - \sum_{i=1}^{n}x_i) \quad \text{if} \quad \sum_{i=1}^{n}x_i \leq 1\\
+0 \quad \text{otherwise}
+\end{cases}
+\]
+
+Here, $(1 - \sum_{i=1}^{n}x_i)$ is the \textit{quality of service} of the channel. Let's try to compute the PSNE $(x_1^*, x_2^*, ..., x_n^*)$. By definition
+
+
+\begin{align*}
+u_i(x_i^*, x_{-i}^*)
+& = \underset{x_i \in [0,1]}{max}~u_i(x_i, x_{-i}^*)\\
+& = \underset{x_i \in [0,1]}{max}~x_i(1 - x_i - \sum_{j \neq i}x_i^*)\\
+& = \underset{x_i \in [0,1]}{max}~x_i(1 - x_i - t_i)
+\end{align*}
+This is a quadratic in $x_i$ and can be solved by setting derivative to be 0 which gives us 
+\[
+x_i^* = \frac{1 - t_i}{2} = \frac{1 - \sum_{j \neq i}x_i^*}{2}
+\]
+These are essentially $n$ equations in $n$ variables and can be solved. \textcolor{red}{But how to solve it?} This gives the solution $x_i = \frac{1}{n+1}$ for every $i \in N$.
+
+\paragraph{Social utility/welfare} is defined as the sum of utilities of all players i.e. $\sum_{i=1}^{n}u_i(x)$. 
+
+For the above Nash Equilibrium, Social Utility will be $\sum_{i=1}^{n}u_i(x^*) = \sum_{i=1}^{n}(\frac{1}{n+1}(1 - \frac{n}{n+1})) = \frac{n}{(n+1)^2}$
+
+However, consider the profile $x = (\frac{1}{2n}, \frac{1}{2n}, ...)$. Its social utility is $\sum_{i=1}^{n}\frac{1}{2n}(1 - \frac{n}{2n}) = \frac{1}{4}$. This is always greater than the PSNE for $n \geq 1$. 
+
+This is an illustration of how Nash Equilibrias may not maximize the social utility. This means that there is some \textit{cost} of following the Nash Equilibrium. Rational and Intelligent players are \textit{losing something}. This \textit{cost} is also known as \textit{Price of Anarchy}.
+
+
+
