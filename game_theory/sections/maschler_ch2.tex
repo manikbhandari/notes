@@ -16,11 +16,11 @@ It is a binary relation over the set of possible outcomes $O$ i.e. $x \geq_{i} y
 Note that for any monotonically increasing function $v:\mathbb{R} \to \mathbb{R}$, $v \cdot u = v(u(x))$ is also a utility function for the same preference relation. So a utility function $u$ is only \textit{ordinal} i.e the real number is not a measure of intensity of a player's preference.
 
 \section{Strategic form games a.k.a. Normal form}
-\paragraph{Definition} A Strategic Form Game is an ordered triple $G = (N, (S_i)_{i \in N}, (u_i)_{i \in N})$. $N$ is the \textit{finite} set of players $N = {1,2,..,n}$, $S_i$ is the set of strategies of player $i$. Denote the set of all possible strategy vectors as $S = S_1 \times S_2 ... \times S_n$. And $u_i: S \to \mathbb{R}$ maps a vector of strategies $s = (s_i)_{i\inN}$ to the payoff of the $i^{th}$ player. 
+\paragraph{Definition} A Strategic Form Game is an ordered triple $G = (N, (S_i)_{i \in N}, (u_i)_{i \in N})$. $N$ is the \textit{finite} set of players $N = {1,2,..,n}$, $S_i$ is the set of strategies of player $i$. Denote the set of all possible strategy vectors as $S = S_1 \times S_2 ... \times S_n$. And $u_i: S \to \mathbb{R}$ maps a vector of strategies $s = (s_i)_{i \in N}$ to the payoff of the $i^{th}$ player. 
 
 Note the strategy set of a player need not be finite. If it is finite, we call it a \textit{finite game}.
 
-\paragraph{Notation} Denote $X$ as the cross product $\times_{i\inN}X_i$. Then $X_{-i} = $\times_{j\neq i}X_j$ i.e. an element of $X_{-i}$ is an n-1 dimensional vector $x_{i-1} = (x_i, ... x_{i-1}, x_{i+1}... x_n)$.
+\paragraph{Notation} Denote $X$ as the cross product $\times_{i \in N}X_i$. Then $X_{-i} = \times_{j\neq i}X_j$ i.e. an element of $X_{-i}$ is an n-1 dimensional vector $x_{i-1} = (x_i, ... x_{i-1}, x_{i+1}... x_n)$.
 
 \paragraph{Domination} The strategy $s_i$ of a player is dominated by $t_i$ if for \textit{each} strategy of other players $s_{-i} \in S_{-i}$ 
 \[
