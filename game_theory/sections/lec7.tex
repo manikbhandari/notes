@@ -5,4 +5,17 @@ A pessimistic player might want to maximize the minimum payoff he can get, disre
 \[
 	\underline{v_i} := \underset{s_i \in S_i}{max}~\underset{t_{-i} \in S_{-i}}{min}~u_i(s_i, t_{-i})
 \]
-This quantity $\underline{v_i}$ is the \textit{maxmin value} of player $i$ or the \textit{security} of player $i$. The strategy $s_i^*$ that guarantees this value is the \textit{maxmin strategy}.
+This quantity $\underline{v_i}$ is the \textit{maxmin value} of player $i$ or the \textit{security} of player $i$. The strategy $s_i^*$ that guarantees this value is the \textit{maxmin strategy}. It is also known as \textit{no regret strategy} since a player is never worse off with any other strategy.
+
+Since this strategy $s_i^*$ is the max, it satisfies $\underset{t_{-i} \in S_{-i}}{min}~u_i(s_i^*, t_{-i}) \geq \underset{t_{-i} \in S_{-i}}{min}~u_i(s_i, t_{-i})~ \forall s_i \in S_i$. Since this is true for all $s_i \in S_i$, it must be true for the maxmin strategy also. Therefore, $\underset{t_{-i} \in S_{-i}}{min}~u_i(s_i^*, t_{-i}) \geq \underline{v_i} ~ \forall t_{-i} \in S_{-i}$ . This is another way of saying player $i$ is never worse off than $\underline{v_i}$ no matter what the other players play.
+
+\textcolor{red}{[side note]} You have to be careful if max and min are not defined, let's say when the strategy sets are infinite. Then you must replace max and min by sup and inf respectively. Even then, they might not exist.
+
+\paragraph{Dominant strategy and maxmin strategy} The dominant strategy is also the maxmin strategy and is also the nash equilibrium strategy.
+\textcolor{red}{proof?. Reconfirm this. It sounds wrong.}
+
+\paragraph{Strictly dominant and maxmin} If each player has a strictly dominant strategy $s_i^*$ then $(s_1^*, ..., s_n^*)$ is a unique \textit{equilibrium }of the game and the vector is also the vector of \textit{maxmin }strategies.
+
+\paragraph{nash equilibrium and security} Every Nash Equilibrium $\sigma^*$ of a strategic form game satisfies $u_i(\sigma^*) \geq \underline{v_i}$ for every player $i$.
+
+This is because for every player $i$, $u_i(s_i, s_{-i}) \geq \underset{s_{-i}}{min}~u_i(s_i, s_{-i})$. Taking max over $s_i$ on both sides, you get $\underset{s_i}{max} ~u_i(s_i, s_{-i}) \geq \underset{s_i}{max} ~\underset{s_{-i}}{min}~u_i(s_i, s_{-i})$ which proves the theorem.
