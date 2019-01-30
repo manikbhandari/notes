@@ -1,0 +1,8 @@
+\section{Solutions other than Nash Equilibrium}
+We will find solutions that \textit{rational} players might not choose but \textit{pessimistic} players might.
+
+A pessimistic player might want to maximize the minimum payoff he can get, disregarding whether other players are rational or not. i.e. 
+\[
+	\underline{v_i} := \underset{s_i \in S_i}{max}~\underset{t_{-i} \in S_{-i}}{min}~u_i(s_i, t_{-i})
+\]
+This quantity $\underline{v_i}$ is the \textit{maxmin value} of player $i$ or the \textit{security} of player $i$. The strategy $s_i^*$ that guarantees this value is the \textit{maxmin strategy}.
