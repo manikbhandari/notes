@@ -41,7 +41,7 @@ u_i(b) =
 \]
 Second case arises from the fact that $k$ people can give the same maximum bid in which case, the winner will be decided by a fair lottery. Note that, in this case the second highest bid will also be the same as $v_i$ and so the profit will be 0.
 
-In this game, the strategy $b_i = v_i$ weakly dominates all other strategies.
+In this game, the strategy $b_i = v_i$ weakly dominates all other strategies. \textcolor{red}{Verify by drawing the utility functions}.
 
 \paragraph{Definition of Nash Equilibrium} A strategy vector $s^* = (s_1^*, s_2^*, ..., s_n^*)$ is a Nash Equilibrium if for \textit{each} player $i \in N$ and for each strategy $s_i \in S_i$, $u_i(s*) \geq u_i(s, s_{-i}^*)$. And the corresponding payoff vector $u(s^*)$ is the \textit{equilibrium payoff }corresponding to the Nash eqbm $s^*$.
 
@@ -49,6 +49,10 @@ In this game, the strategy $b_i = v_i$ weakly dominates all other strategies.
 
 A Nash eqbm is a strategy vector from which no player has a profitable (unilateral) deviation.
 
+\paragraph{Best Response} $s_i$ is a \textit{best response} of player $i$ to $s_{-i}$ if $u_i(s_i, s_{-i}) \geq \underset{t_i \in S_i}{max}~u_i(t_i, s_{-i})$
 
+\paragraph{Another Definition of Nash Equilibrium} $s^* = (s_1^*, s_2^*, ...)$ is a Nash Equilibrium if $s_i^*$ is a best response to $s_{-i}^*$ for every player $i \in N$.
 
+\paragraph{Coordination Games} are those in which coordinating responses leads to better payoffs than not coordinating.
 
+\paragraph{Properties of Nash Equilibrium} (1) It is stable - a property that every equilibrium should exhibit. (2) It is self-fulfilling - If there is a agreement to play \textit{some} equilibrium, then even if the agreement was not binding, players would prefer not to deviate. 
