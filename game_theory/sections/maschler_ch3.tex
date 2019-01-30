@@ -19,7 +19,7 @@ So $t_i$ strictly dominates $s_i$ or $s_i$ is strictly dominated by $t_i$.
 
 Therefore, solution always exists if each player has a \textit{strictly dominant strategy}.
 
-\paragraph{Order of elimination} does not matter when we iteratively eliminate dominated strategies. You'll always get the same set of strategies. \textcolor{red}{prove this}.
+\paragraph{Order of elimination} does not matter when we iteratively eliminate strictly dominated strategies. You'll always get the same set of strategies. \textcolor{red}{prove this}. However, for eliminating weakly dominated strategies, you might get the different results.
 
 \paragraph{Weakly dominated strategy} $s_i$ is weakly dominated by $t_i$ if 
 \begin{enumerate}
@@ -42,3 +42,13 @@ u_i(b) =
 Second case arises from the fact that $k$ people can give the same maximum bid in which case, the winner will be decided by a fair lottery. Note that, in this case the second highest bid will also be the same as $v_i$ and so the profit will be 0.
 
 In this game, the strategy $b_i = v_i$ weakly dominates all other strategies.
+
+\paragraph{Definition of Nash Equilibrium} A strategy vector $s^* = (s_1^*, s_2^*, ..., s_n^*)$ is a Nash Equilibrium if for \textit{each} player $i \in N$ and for each strategy $s_i \in S_i$, $u_i(s*) \geq u_i(s, s_{-i}^*)$. And the corresponding payoff vector $u(s^*)$ is the \textit{equilibrium payoff }corresponding to the Nash eqbm $s^*$.
+
+\paragraph{Profitable Deviation} of player $i$ from a strategy vector $s$, is a strategy $\hat{s_i} \in S_i$ such that $u_i(\hat{s_i}, s_{-i}) > u_i(s_i)$.
+
+A Nash eqbm is a strategy vector from which no player has a profitable (unilateral) deviation.
+
+
+
+
