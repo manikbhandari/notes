@@ -1,2 +1,2 @@
 # notes
-This repository contains my notes from various topics like Probability Theory etc.
+This repository contains my notes from various topics, mainly from lectures at [IISC](https://www.iisc.ac.in/).
