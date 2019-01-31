@@ -47,6 +47,22 @@
 	\item Intelligence assumes that players are capable of computing the \textit{optimal strategy} (for rational players this strategy is maximizing their expected utility). Rationality assumes that players will play to maximize their expected utility.
 	\item In the matching pennies problem, Player 1 wins on a match and Player 2 wins on a mismatch. Since the probabilities of matching and not matching are equally likely $(\frac{2}{4}, \frac{2}{4})$, the expected utility of both the players should be zero. \textcolor{red}{very doubtful on this.}
 \end{enumerate}
+
+\subsection{Workhorse}
+\begin{enumerate}
+	\item \textcolor{red}{Need to get the book}
+	\item The strategic form game here $G = (N, (S_i)_{i \in N}, (u_i)_{i \in N})$ consists of $N = \{1,2, ..., n\}$, $S_i = \{1,2, ..., m\}$, the strategy vector $s \in S$ will be $(x_1, x_2, ..., x_n)$ where each $x_i \in \{1,2, ..., m\}$.
+	\[
+		u_i(x_1, x_2, ..., x_n) = 
+		\begin{cases}
+			\frac{1}{|\{k: x_k = argmin~(|x_k - (2/3)\bar{x}|)\}|} \quad \text{if} \quad x_i = argmin~(|x_i - (2/3)\bar{x}|)\\
+			0 \quad \text{otherwise}
+		\end{cases}
+	\]
+	Can we get a PSNE analysis for this?
+	\item \textcolor{red}{Pigou network. need to study.}
+	\item \textcolor{red}{Not sure} First person cuts in half, second cuts each half in one-sixth. Third person picks first, then second, then first.
+\end{enumerate}
 	
 	
 \end{document}
